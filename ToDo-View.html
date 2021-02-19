@@ -6,8 +6,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>TO DO List</title>
     <link rel="stylesheet" href="./ToDo-View.css">
-
-
 </head>
 
 <body>
@@ -19,9 +17,19 @@
         </form>
         <div id="container"></div>
     </main>
+    <!-- <script id="note-template" type="text/x-handlebars-template">
+        <div>
+         {{#each ToDoManager.notes}}
+            <div class="note-wrapper">
+                <p>{{note.text}}</p>
+                <img src="./trash.png" alt="delete-icon" class="trash-icon">
+            </div>
+        {{/each}}
+        </div>
+      </script> -->
+    <script src="./node_modules/handlebars/dist/handlebars.min.js"></script>
     <script src="./ToDoManager.js"></script>
     <script src="./ToDo-Controller.js"></script>
-
 </body>
 
 </html>
