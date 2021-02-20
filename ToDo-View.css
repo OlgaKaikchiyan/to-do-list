@@ -4,9 +4,10 @@ body {
 }
 
 h1 {
-    font: 32px Monserrat, sans-serif;
+    font: 36px Monserrat, sans-serif;
     text-transform: uppercase;
     color: white;
+    text-shadow: 5px 5px 20px darkblue;
 }
 
 #toDoList {
@@ -20,8 +21,11 @@ h1 {
 
 .to-do {
     background-color: white;
-    padding: 10px 50px;
+    padding: 10px 0px;
     border-radius: 5px;
+    display: flex;
+    justify-content: space-evenly;
+    box-shadow: 5px 5px 20px darkblue;
 }
 
 #container {
@@ -30,6 +34,12 @@ h1 {
     width: 100%;
     background-color: white;
     border-radius: 5px;
+    box-shadow: 5px 5px 20px darkblue;
+    font: 16px Montserrat, sans-serif;
+}
+
+#container *{
+    text-align: left;
 }
 
 .note-wrapper{
@@ -40,7 +50,22 @@ h1 {
 }
 
 .trash-icon{
-    width: 15px;
-    height: 15px;
-    margin: auto 10px;
+    width: 20px;
+    height: 20px;
+    margin: auto 5px;
+}
+
+#inputText{
+    border: 0px;
+    font: 16px Montserrat, sans-serif;
+    padding: 5px 10px;
+}
+
+#submitBtn{
+    background-color: #1877f2;
+    border: 0px;
+    border-radius: 5px;
+    color: white;
+    padding: 5px 15px;
+    font: 16px Montserrat, sans-serif;
 }
