@@ -30,6 +30,7 @@ h1 {
 
 #container {
     margin-top: 30px;
+    padding-bottom: 30px;
     min-height: 200px;
     width: 100%;
     background-color: white;
@@ -69,4 +70,12 @@ h1 {
     color: white;
     padding: 5px 15px;
     font: 16px Montserrat, sans-serif;
+}
+
+.line-through{
+    text-decoration: line-through;
+}
+
+.no-line-through{
+    text-decoration: none;
 }

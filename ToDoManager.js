@@ -28,44 +28,29 @@ const toDoManager = (function () {
             if (initialLoadNotes) {
                 this.notes = JSON.parse(localStorage.getItem('notes'));
             }
-            container.innerHTML = '';
-            this.notes.forEach(note => {
-                let newInput = document.createElement('div');
-                newInput.className = 'note-wrapper';
-                container.appendChild(newInput);
 
-                let newTodo = document.createElement('p');
-                newTodo.innerText = note.text;
-                if (note.hasLineThrough === false) {
-                    newTodo.style.textDecoration = '';
+            let source = document.getElementById('note-template').innerHTML;
+            let template = Handlebars.compile(source);
+            let html = template(toDoManager);
+            container.innerHTML = html;
+
+            let allTextFields = document.querySelectorAll('p');
+            allTextFields.forEach(field => field.addEventListener('click', function (ev) {
+                if (ev.target.className === 'no-line-through') {
+                    ev.target.className = 'line-through'; 
+                    toDoManager.notes[ev.target.id].hasLineThrough = true;
                 } else {
-                    newTodo.style.textDecoration = 'line-through';
+                    ev.target.className = 'no-line-through';
+                    toDoManager.notes[ev.target.id].hasLineThrough = false;
                 }
+                localStorage.setItem('notes', JSON.stringify(toDoManager.notes));
+            }))
 
-                newTodo.addEventListener('click', function () {
-                    if (note.hasLineThrough === false) {
-                        this.style.textDecoration = 'line-through';
-                        note.hasLineThrough = true;
-                        localStorage.setItem('notes', JSON.stringify(toDoManager.notes));
-                    } else {
-                        this.style.textDecoration = '';
-                        note.hasLineThrough = false;
-                        localStorage.setItem('notes', JSON.stringify(toDoManager.notes));
-                    }
-                });
-                newInput.appendChild(newTodo);
-
-                let trash = document.createElement('img');
-                trash.src = 'trash.png';
-                trash.alt = 'delete';
-                trash.id = this.notes.indexOf(note);
-                trash.className = 'trash-icon';
-                trash.addEventListener('click', function (ev) {
-                    toDoManager.removeNote(ev);
-                    toDoManager.printNotes(container);
-                })
-                newInput.appendChild(trash);
-            })
+            let allTrashBtns = document.querySelectorAll('.trash-icon');
+            allTrashBtns.forEach(btn => btn.addEventListener('click', function (ev) {
+                toDoManager.removeNote(ev);
+                toDoManager.printNotes(container);
+            }))
         }
     }
     return new ToDoManager()

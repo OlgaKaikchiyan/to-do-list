@@ -17,18 +17,20 @@
         </form>
         <div id="container"></div>
     </main>
-    <!-- <script id="note-template" type="text/x-handlebars-template">
-        <div>
-         {{#each ToDoManager.notes}}
-            <div class="note-wrapper">
-                <p>{{note.text}}</p>
-                <img src="./trash.png" alt="delete-icon" class="trash-icon">
-            </div>
-        {{/each}}
-        </div>
-      </script> -->
     <script src="./node_modules/handlebars/dist/handlebars.min.js"></script>
     <script src="./ToDoManager.js"></script>
+    <script id="note-template" type="text/x-handlebars-template">
+         {{#each notes}}
+            <div class="note-wrapper">
+                {{#if hasLineThrough}}
+                <p class="line-through" id="{{@index}}">{{text}}</p>
+                {{else}}
+                <p class="no-line-through" id="{{@index}}">{{text}}</p>
+                {{/if}}
+                <img src="./trash.png" alt="delete-icon" class="trash-icon" id="{{@index}}">
+            </div>
+        {{/each}}
+      </script>
     <script src="./ToDo-Controller.js"></script>
 </body>
 
